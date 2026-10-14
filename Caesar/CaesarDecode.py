@@ -2,16 +2,16 @@ alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 cipherText = input("cipher text: ")
 
-shift = 14
+shift = int(input("shift factor"))
 
 decoded = ""
 
 for letter in cipherText:
     if alphabet.find(letter) != -1:
         i = alphabet.find(letter)
-        if alphabet.find(letter)+shift > 25:
-            i -= 26
-        decoded += alphabet[i+shift]
+        i += shift
+        i %= 26
+        decoded += alphabet[i]
 
 print("Decoded:")
 print(decoded)

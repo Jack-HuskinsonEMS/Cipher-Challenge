@@ -1,3 +1,5 @@
+FINAL_NGRAM_SCORE: -4.19
+
 My dear friend,
 
 I must commend you on your taste in theatre as well as in companions. Your suggestion that I should attend Mme Bernhardt's latest triumph was well-timed, since my business had brought me to Paris and left me in need of a distraction. While the military adventure in Egypt has had many diplomatic ramifications which will be felt for some time, the impact on our relations with France is the most immediate. 

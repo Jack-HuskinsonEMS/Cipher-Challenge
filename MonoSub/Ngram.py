@@ -58,9 +58,8 @@ tempCipher=""
 for i in cipher:
         tempCipher+=i
         testCipher+=i
-
-while Ngram<-4:
-    failed=0
+failed=0
+while Ngram<-4.5:
     pos1=random.randint(0,25)
     pos2=pos1
     while pos1==pos2:
@@ -83,6 +82,7 @@ while Ngram<-4:
                 pos1=chr(pos1+65)
                 pos2=chr(pos2+65)
                 Mapping[pos1],Mapping[pos2]=Mapping[pos2],Mapping[pos1]
+        failed=0
     Ngram=NgramAnalysis(tempCipher,QuadProbs)
 
 print(tempCipher,Ngram)

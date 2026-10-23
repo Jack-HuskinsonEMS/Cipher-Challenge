@@ -7,6 +7,5 @@ def IC(text):
         Ni=(texts.count(chr(i+65)))
         summ+=Ni*(Ni-1)
     N=len(texts)
-    return summ/(N*(N-1))
-print(IC(input()))   
-
+    return summ/(N*(N-1))  
+print(IC(input()))

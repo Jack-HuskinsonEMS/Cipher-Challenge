@@ -30,7 +30,7 @@ def NgramAnalysis(cipher,QuadProbs):
         else:
             TotalScore+=Default
         Evaled+=1
-    return TotalScore#/Evaled
+    return TotalScore/Evaled
 
 
 def Freq(text):
@@ -70,7 +70,7 @@ failed=0
 working_score = NgramAnalysis(tempCipher, QuadProbs)
 global_best_score = working_score
 global_best_cipher = tempCipher
-temp = 20
+temp = 0.02
 cooling_rate = 0.001
 for i in range(50000):
     pos1=random.randint(0,25)

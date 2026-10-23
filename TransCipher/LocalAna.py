@@ -76,4 +76,4 @@ for i in range(0,120):
     if TEST[i]>MaxVal:
         MaxVal=TEST[i]
         MaxIndex=i
-print(Solvs[MaxIndex])
+print(Solvs[MaxIndex],MaxVal)

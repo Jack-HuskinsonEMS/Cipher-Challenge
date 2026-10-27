@@ -64,8 +64,10 @@ for i in cipher:
         tempCipher+=i
         testCipher+=i
 failed=0
-T=0.02
-for i in range(20000):
+N=200000
+T=0.02 * min(1, 4/KEYLEN)
+mult=(0.0001/T)**(1/N)
+for i in range(N):
     Row=random.randint(0,KEYLEN-1)
     pos1=random.randint(0,25)
     pos2=pos1
@@ -87,9 +89,9 @@ for i in range(20000):
         Mappings[Row][pos2],Mappings[Row][pos1]=Mappings[Row][pos1],Mappings[Row][pos2]
         
     Ngram=NgramAnalysis(tempCipher,QuadProbs)
-    T=max(0.0001,T*0.99998)
+    T=max(0.0001,T*mult)
     if i%1000==0:
         print(i,Ngram)
 
-print(tempCipher,Ngram,best_mappings)
+print(tempCipher,Ngram)#,best_mappings)
 

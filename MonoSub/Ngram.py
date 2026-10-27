@@ -21,12 +21,12 @@ print(list(QuadProbs.items())[:3])
 Default=math.log10(0.1/Total)
 print(f"Default={Default}")
 def NgramAnalysis(cipher,QuadProbs):
-    clean_text = re.sub(r'[^A-Z]', '', cipher.upper())
+    cleanText = re.sub(r'[^A-Z]', '', cipher.upper())
     TotalScore=0
     Evaled=0
-    for i in range(len(clean_text)-3):
-        if clean_text[i:i+4] in QuadProbs:
-            TotalScore+=QuadProbs[clean_text[i:i+4]]
+    for i in range(len(cleanText)-3):
+        if cleanText[i:i+4] in QuadProbs:
+            TotalScore+=QuadProbs[cleanText[i:i+4]]
         else:
             TotalScore+=Default
         Evaled+=1
@@ -67,11 +67,10 @@ for i in cipher:
         tempCipher+=i
         testCipher+=i
 failed=0
-working_score = NgramAnalysis(tempCipher, QuadProbs)
-global_best_score = working_score
-global_best_cipher = tempCipher
+workingScore = NgramAnalysis(tempCipher, QuadProbs)
+globalBestScore = workingScore
+globalBestCipher = tempCipher
 temp = 0.02
-cooling_rate = 0.001
 for i in range(50000):
     pos1=random.randint(0,25)
     pos2=pos1
@@ -81,34 +80,31 @@ for i in range(50000):
     pos2=chr(pos2+65)
     Mapping[pos1],Mapping[pos2]=Mapping[pos2],Mapping[pos1]
     testCipher=Map(cipher,Mapping)
-    current_score = NgramAnalysis(testCipher, QuadProbs)
-    diff=current_score-working_score
-    Flag=True
+    currentScore = NgramAnalysis(testCipher, QuadProbs)
+    diff=currentScore-workingScore
     if i%10000==0:
-        print(i,current_score,pos1,pos2,tempCipher[:15],temp)
-    if diff<-700:
-        Flag=False
+        print(i,currentScore,pos1,pos2,tempCipher[:15],temp)
     if diff > 0:
-        working_score = current_score
+        workingScore = currentScore
         tempCipher = testCipher
         failed=0
-        if current_score > global_best_score:
-            global_best_score = current_score
-            global_best_cipher = testCipher
-    elif Flag and math.exp(diff / temp) > random.random():
-        working_score = current_score 
+        if currentScore > globalBestScore:
+            globalBestScore = currentScore
+            globalBestCipher = testCipher
+    elif 10**(diff/temp) > random.random():
+        workingScore = currentScore 
         tempCipher = testCipher
         failed=0
     else:
         failed+=1
         Mapping[pos2],Mapping[pos1]=Mapping[pos1],Mapping[pos2]
-        if failed>=10000:
-            temp+=3
-            print(i)
-            failed=0
-    temp = max(0.001, temp * 0.99999)
+        #if failed>=10000:
+            #temp+=3
+            #print(i)
+            #failed=0
+    temp = max(0.001, temp * 0.9999)
 
-print(tempCipher,working_score,Mapping)
+print(globalBestCipher,globalBestScore)
 
 
 

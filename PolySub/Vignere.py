@@ -65,8 +65,8 @@ for i in cipher:
         testCipher+=i
 failed=0
 N=200000
-T=0.02 * min(1, 4/KEYLEN)
-mult=(0.0001/T)**(1/N)
+T=2
+accepts=0
 for i in range(N):
     Row=random.randint(0,KEYLEN-1)
     pos1=random.randint(0,25)
@@ -80,18 +80,21 @@ for i in range(N):
     diff=NgramAnalysis(testCipher,QuadProbs)-Ngram
     if diff>0:
         tempCipher=testCipher
-        best_mappings = [row.copy() for row in Mappings]
+        bestMappings = [row.copy() for row in Mappings]
+        accepts+=1
     elif 10 ** (diff/T)>random.random():
         tempCipher=testCipher
-        best_mappings = [row.copy() for row in Mappings]
+        bestMappings = [row.copy() for row in Mappings]
+        accepts+=1
     else:
         failed+=1
         Mappings[Row][pos2],Mappings[Row][pos1]=Mappings[Row][pos1],Mappings[Row][pos2]
         
     Ngram=NgramAnalysis(tempCipher,QuadProbs)
-    T=max(0.0001,T*mult)
+    T=max(0.0001,T*0.9998)
     if i%1000==0:
-        print(i,Ngram)
+        print(i,Ngram,accepts/1000)
+        accepts=0
 
-print(tempCipher,Ngram)#,best_mappings)
+print(tempCipher,Ngram)#,bestMappings)
 

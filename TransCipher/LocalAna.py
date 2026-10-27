@@ -4,7 +4,7 @@ import re
 import itertools
 
 cipher=input("Cipher Text: ").upper()
-clean_cipher=re.sub(r'[^A-Z]', '', cipher.upper())
+cleanCipher=re.sub(r'[^A-Z]', '', cipher.upper())
 cipher=cipher.split()
 QuadCount={}
 Total=0
@@ -22,13 +22,13 @@ for Quads,Count in QuadCount.items():
 print(list(QuadProbs.items())[:3])
 Default=math.log10(0.1/Total)
 print(f"Default={Default}")
-def NgramAnalysis(clean_cipher,QuadProbs):
-    clean_text = clean_cipher
+def NgramAnalysis(cleanCipher,QuadProbs):
+    cleanText = cleanCipher
     TotalScore=0
     Evaled=0
-    for i in range(len(clean_text)-3):
-        if clean_text[i:i+4] in QuadProbs:
-            TotalScore+=QuadProbs[clean_text[i:i+4]]
+    for i in range(len(cleanText)-3):
+        if cleanText[i:i+4] in QuadProbs:
+            TotalScore+=QuadProbs[cleanText[i:i+4]]
         else:
             TotalScore+=Default
         Evaled+=1
@@ -66,8 +66,8 @@ Solvs=[]
 for i,j,k,h,a, in itertools.permutations(range(5),5):
     Solv=""
     Mapping=[i,j,k,h,a]
-    for j in cipher:
-        Solv+=Map(Mapping,5,j)
+    for _ in cipher:
+        Solv+=Map(Mapping,5,_)
     TEST.append(NgramAnalysis(Solv,QuadProbs))
     Solvs.append(Solv)
 MaxVal=-100

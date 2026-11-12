@@ -63,7 +63,7 @@ def Map(Mapping,WIDTH,cipher):
     return Mapped
 TEST=[]
 Solvs=[]
-for i,j,k,h,a, in itertools.permutations(range(5),5):
+for i,j,k,h,a in itertools.permutations(range(5),5):
     Solv=""
     Mapping=[i,j,k,h,a]
     for _ in cipher:

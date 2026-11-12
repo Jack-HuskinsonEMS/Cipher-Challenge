@@ -40,7 +40,7 @@ def NgramAnalysis(cipher,QuadProbs):
 WIDTHS=[]
 number=len(cleanCipher)
 for i in range(2,int((number//40))):
-        WIDTHS.append(i)
+    WIDTHS.append(i)
 print(WIDTHS)
 
 
@@ -135,3 +135,4 @@ for j in WIDTHS:
             overallBestMapping = globalBestMapping
         print(f"Loop {k}={globalBestScore}, Accept Rate={accepts/5000}")
 print(overallBestCipher,overallBestScore,overallBestMapping)
+

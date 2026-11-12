@@ -104,7 +104,7 @@ for i in range(50000):
             #failed=0
     temp = max(0.001, temp * 0.9999)
 
-print(globalBestCipher,globalBestScore)
+print(globalBestCipher,globalBestScore,Mapping)
 
 
 

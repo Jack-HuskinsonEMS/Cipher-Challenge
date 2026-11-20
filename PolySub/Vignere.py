@@ -64,7 +64,7 @@ for i in cipher:
         tempCipher+=i
         testCipher+=i
 failed=0
-N=200000
+N=50000
 T=2
 accepts=0
 for i in range(N):
@@ -97,4 +97,6 @@ for i in range(N):
         accepts=0
 
 print(tempCipher,Ngram)#,bestMappings)
+print(len(tempCipher),len(cipher))
+print(cipher)
 

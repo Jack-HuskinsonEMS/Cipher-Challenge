@@ -39,6 +39,7 @@ def NgramAnalysis(cipher,QuadProbs):
 
 bestScore=-100
 bestSolv=""
+bestRAIL=0
 for r in range(2,100):
     RAILS=r
     Rails=[0]*RAILS
@@ -72,5 +73,7 @@ for r in range(2,100):
     if curScore>bestScore:
         bestScore=curScore
         bestSolv=Solv
-print(bestSolv,bestScore)
+        bestRAIL=r
+    print(r)
+print(bestSolv,bestScore,bestRAIL)
     

@@ -63,16 +63,17 @@ def Map(Mapping,WIDTH,cipher):
     return Mapped
 TEST=[]
 Solvs=[]
-for i,j,k,h,a in itertools.permutations(range(5),5):
+lens=8
+for i,j,k,h,a,b,c,d in itertools.permutations(range(lens),lens):
     Solv=""
-    Mapping=[i,j,k,h,a]
+    Mapping=[i,j,k,h,a,b,c,d]
     for _ in cipher:
-        Solv+=Map(Mapping,5,_)
+        Solv+=Map(Mapping,lens,_)
     TEST.append(NgramAnalysis(Solv,QuadProbs))
     Solvs.append(Solv)
 MaxVal=-100
 MaxIndex=-1
-for i in range(0,120):
+for i in range(0,math.factorial(lens)):
     if TEST[i]>MaxVal:
         MaxVal=TEST[i]
         MaxIndex=i

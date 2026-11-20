@@ -85,7 +85,7 @@ overallBestScore = float("-inf")
 overallBestCipher = None
 overallBestMapping = None
 for j in WIDTHS:
-    for k in range(0,1):
+    for k in range(0,3):
         ROWS=len(cleanCipher)//j
         Mapping=list(range(j))
         tempCipher = Map(Mapping, j, cleanCipher)

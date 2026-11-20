@@ -39,7 +39,7 @@ def NgramAnalysis(cipher,QuadProbs):
 
 WIDTHS=[]
 number=len(cleanCipher)
-for i in range(2,int((number//40))):
+for i in range(2,int((number//100))):
     WIDTHS.append(i)
 print(WIDTHS)
 
@@ -85,7 +85,7 @@ overallBestScore = float("-inf")
 overallBestCipher = None
 overallBestMapping = None
 for j in WIDTHS:
-    for k in range(0,3):
+    for k in range(0,1):
         ROWS=len(cleanCipher)//j
         Mapping=list(range(j))
         tempCipher = Map(Mapping, j, cleanCipher)

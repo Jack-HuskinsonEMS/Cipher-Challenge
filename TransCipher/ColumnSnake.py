@@ -9,6 +9,7 @@ cleanCipher=re.sub(r'[^A-Z]', '', cipher.upper())
 cipher=re.sub(r'[^A-Z]', '', cipher.upper())
 QuadCount={}
 Total=0
+print(len(cleanCipher))
 
 with open("english_quadgrams.txt") as file:
     for line in file:

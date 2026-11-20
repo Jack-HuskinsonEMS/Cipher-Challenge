@@ -1,0 +1,12 @@
+{
+  "name": "Cipher-Challenge Auto-Save",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.autoSave": "afterDelay",
+        "files.autoSaveDelay": 1000
+      }
+    }
+  },
+  "postAttachCommand": "if [ ! -f /tmp/autosave.pid ] || ! kill -0 $(cat /tmp/autosave.pid) 2>/dev/null; then nohup bash -c 'echo $$ > /tmp/autosave.pid; BRANCH=\"progress-$GITHUB_USER\"; git checkout -B \"$BRANCH\"; while true; do if [[ -n $(git status -s) ]]; then git add -A && git commit -m \"progress: $(date +%H:%M:%S)\" && git push -u origin \"$BRANCH\"; fi; sleep 300; done' >/dev/null 2>&1 & fi"
+}
